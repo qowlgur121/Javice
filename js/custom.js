@@ -15,28 +15,23 @@ $(function(){
     });
     /* end typed element */
 
-    /* Smooth scroll and Scroll spy (https://github.com/ChrisWojcik/single-page-nav)    
-    ---------------------------------------------------------------------------------*/ 
-    $('.templatemo-nav').singlePageNav({
-        offset: $(".templatemo-nav").height(),
-        filter: ':not(.external)',
-        updateHash: false
-    });
 
-    /* start navigation top js */
-    $(window).scroll(function(){
-        if($(this).scrollTop()>58){
-            $(".templatemo-nav").addClass("sticky");
-        }
-        else{
-            $(".templatemo-nav").removeClass("sticky");
-        }
-    });
-    
     /* Hide mobile menu after clicking on a link
     -----------------------------------------------*/
     $('.navbar-collapse a').click(function(){
         $(".navbar-collapse").collapse('hide');
+    });$(document).ready(function() {
+        // 네비게이션 메뉴 클릭 시 이벤트 핸들링
+        $('.templatemo-nav a').on('click', function(event) {
+            // 클릭된 링크의 href 가져오기
+            var href = $(this).attr('href');
+    
+            // 페이지 이동 방지 (기본 이벤트 취소)
+            event.preventDefault();
+    
+            // 페이지 이동
+            window.location.href = href;
+        });
     });
     /* end navigation top js */
 
